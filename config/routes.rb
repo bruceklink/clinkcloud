@@ -1,5 +1,5 @@
 Clinkcloud::Application.routes.draw do
-root :to => "posts#<controller>"
+root :to => "posts#controller"
   # Routes for the Category resource:
   # CREATE
   get '/categories/new', controller: 'categories', action: 'new', as: 'new_category'
