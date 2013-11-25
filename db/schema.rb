@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(version: 20131121123031) do
 
   create_table "categories", force: true do |t|
     t.string "original"
-    t.string "type"
   end
 
   create_table "friends", force: true do |t|

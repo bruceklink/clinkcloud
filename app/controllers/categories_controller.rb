@@ -16,9 +16,6 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new
     @category.original = params[:original]
-    @category.media = params[:media]
-
-
     if @category.save
       redirect_to categories_url, notice: "Category created successfully."
     else
@@ -34,7 +31,6 @@ class CategoriesController < ApplicationController
     @category = Category.find_by(id: params[:id])
     @category.original = params[:original]
     @category.media = params[:media]
-
     if @category.save
       redirect_to categories_url, notice: "Category updated successfully."
     else

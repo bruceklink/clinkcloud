@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    @networks = Network.all
   end
 
   def create

@@ -13,7 +13,12 @@
   <div class="form-group">
     <%= label_tag :media, nil, class: 'col-md-2 control-label' %>
     <div class="col-md-6">
-      <%= text_field_tag :media, nil, class: 'form-control' %>
+      <%#= text_field_tag :media, nil, class: 'form-control' %>
+      <select name="media">
+        <option value="1">Photo</option>
+        <option value="2">Video</option>
+        <option value="3">Link</option>
+      </select>
     </div>
   </div>
 
