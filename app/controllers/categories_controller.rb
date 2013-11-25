@@ -2,7 +2,9 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
+
   end
+
 
   def show
     @category = Category.find_by(id: params[:id])
@@ -14,7 +16,8 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new
     @category.original = params[:original]
-    @category.type = params[:type]
+    @category.media = params[:media]
+
 
     if @category.save
       redirect_to categories_url, notice: "Category created successfully."
@@ -30,7 +33,7 @@ class CategoriesController < ApplicationController
   def update
     @category = Category.find_by(id: params[:id])
     @category.original = params[:original]
-    @category.type = params[:type]
+    @category.media = params[:media]
 
     if @category.save
       redirect_to categories_url, notice: "Category updated successfully."
