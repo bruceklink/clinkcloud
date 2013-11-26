@@ -4,11 +4,11 @@
 </div>
 
 
-<ul class="col-md-3">
+<ul class="col-md-3"> <h2>Links</h2>
 <% @posts.each do |p| %>
   <% if p["type"] == "link" %>
   <li>
-    <%= p["from"]["name"] %> 
+    <%= p["from"]["name"] %> :
     <%= p["message"] %> 
     <a href="<%= p["link"] %>"><%= p["caption"] %></a>
   </li>
@@ -16,23 +16,35 @@
 <% end %>
 </ul>
 
-<ul class="col-md-3">
+<ul class="col-md-3"> <h2>Photos</h2>
 <% @posts.each do |p| %>
   <% if p["type"] == "photo" %>
   <li>
-    <%= p["from"]["name"] %> 
+    <%= p["from"]["name"] %> : <%= p["message"] %> 
+  </li>
+    <img src="<%= p["picture"] %>" width="150">
+    </img>
+  
+  <% end %>
+<% end %>
+</ul>
+
+<ul class="col-md-3"> <h2>Statuses</h2>
+<% @posts.each do |p| %>
+  <% if p["type"] == "status" %>
+  <li>
+    <%= p["from"]["name"] %> :
     <%= p["message"] %> 
-    <a href="<%= p["link"] %>"><%= p["caption"] %></a>
   </li>
   <% end %>
 <% end %>
 </ul>
 
-<ul class="col-md-3">
+  <ul class="col-md-3"> <h2>Videos</h2>
 <% @posts.each do |p| %>
-  <% if p["type"] == "status" %>
+  <% if p["type"] == "videos" %>
   <li>
-    <%= p["from"]["name"] %> 
+    <%= p["from"]["name"] %> :
     <%= p["message"] %> 
   </li>
   <% end %>
