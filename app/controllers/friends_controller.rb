@@ -1,7 +1,18 @@
+require 'open-uri'
+
+
 class FriendsController < ApplicationController
 
   def index
-    @friends = Friend.all
+ 
+      @parsed_data = JSON.parse(open("https://graph.facebook.com/me/home?access_token=CAACEdEose0cBAHXb3fIOkTivgKEJh0IqMHkw3fahINzwErLdCrddxiMl0QMCaVaP9CxoZCt1n5J2szZBdQyH19ZCwts3XHZBVvYr05dlxrqt0SvguXsZB8jACHCgpckfoZCdJomZCs1DgiZAohnlQVefLPabuktZBsupTiUniAQxxZCVutXhfhiI8AyIyjmJHjmkWjkn42O3PRFAZDZD").read)
+
+      url = "https://graph.facebook.com/me/home?access_token=CAACEdEose0cBAHXb3fIOkTivgKEJh0IqMHkw3fahINzwErLdCrddxiMl0QMCaVaP9CxoZCt1n5J2szZBdQyH19ZCwts3XHZBVvYr05dlxrqt0SvguXsZB8jACHCgpckfoZCdJomZCs1DgiZAohnlQVefLPabuktZBsupTiUniAQxxZCVutXhfhiI8AyIyjmJHjmkWjkn42O3PRFAZDZD"
+
+      raw_data = open(url).read
+
+      @parsed_data = JSON.parse(raw_data)
+
   end
 
   def show
