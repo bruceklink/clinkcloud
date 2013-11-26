@@ -4,8 +4,13 @@
 </div>
 
 
-
-<%= @parsed_data %>
-
+<ul>
+<% @posts.each do |p| %>
+  <li>
+    <%= p["from"]["name"] %> 
+    <%= p["picture"] %>
+  </li>
+<% end %>
+</ul>
 
 

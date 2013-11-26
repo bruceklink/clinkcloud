@@ -5,13 +5,10 @@ class FriendsController < ApplicationController
 
   def index
  
-      @parsed_data = JSON.parse(open("https://graph.facebook.com/me/home?access_token=CAACEdEose0cBAHXb3fIOkTivgKEJh0IqMHkw3fahINzwErLdCrddxiMl0QMCaVaP9CxoZCt1n5J2szZBdQyH19ZCwts3XHZBVvYr05dlxrqt0SvguXsZB8jACHCgpckfoZCdJomZCs1DgiZAohnlQVefLPabuktZBsupTiUniAQxxZCVutXhfhiI8AyIyjmJHjmkWjkn42O3PRFAZDZD").read)
+      parsed_data = JSON.parse(open("https://graph.facebook.com/me/home?access_token=CAACEdEose0cBACZBOXkaitahSonTPdZBktKTSNXivLi9IZBhHBOaUNNwfH9ABw8pjpY7UCLijKEMSZCv1SrYvoVkAD8KyZBQHZBxSn2CBDlKNZCFU46M0VgnGg7TQtiZAJnotZAMwjD9KeEZB48Sok1RzS1AWXhUAh7rTntdwDquZCQF0DuPuVjM6XvAvG5YZB6wbCL2Cy2ZBdXkDGwZDZD").read)
 
-      url = "https://graph.facebook.com/me/home?access_token=CAACEdEose0cBAHXb3fIOkTivgKEJh0IqMHkw3fahINzwErLdCrddxiMl0QMCaVaP9CxoZCt1n5J2szZBdQyH19ZCwts3XHZBVvYr05dlxrqt0SvguXsZB8jACHCgpckfoZCdJomZCs1DgiZAohnlQVefLPabuktZBsupTiUniAQxxZCVutXhfhiI8AyIyjmJHjmkWjkn42O3PRFAZDZD"
-
-      raw_data = open(url).read
-
-      @parsed_data = JSON.parse(raw_data)
+    
+      @posts = parsed_data["data"]
 
   end
 
