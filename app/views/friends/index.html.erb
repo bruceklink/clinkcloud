@@ -6,10 +6,13 @@
 
 <ul>
 <% @posts.each do |p| %>
+  <% if p["type"] == "link" %>
   <li>
     <%= p["from"]["name"] %> 
-    <%= p["picture"] %>
+    <%= p["message"] %> 
+    <a href="<%= p["link"] %>"><%= p["caption"] %></a>
   </li>
+  <% end %>
 <% end %>
 </ul>
 
