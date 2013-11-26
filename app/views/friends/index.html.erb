@@ -4,13 +4,36 @@
 </div>
 
 
-<ul>
+<ul class="col-md-3">
 <% @posts.each do |p| %>
   <% if p["type"] == "link" %>
   <li>
     <%= p["from"]["name"] %> 
     <%= p["message"] %> 
     <a href="<%= p["link"] %>"><%= p["caption"] %></a>
+  </li>
+  <% end %>
+<% end %>
+</ul>
+
+<ul class="col-md-3">
+<% @posts.each do |p| %>
+  <% if p["type"] == "photo" %>
+  <li>
+    <%= p["from"]["name"] %> 
+    <%= p["message"] %> 
+    <a href="<%= p["link"] %>"><%= p["caption"] %></a>
+  </li>
+  <% end %>
+<% end %>
+</ul>
+
+<ul class="col-md-3">
+<% @posts.each do |p| %>
+  <% if p["type"] == "status" %>
+  <li>
+    <%= p["from"]["name"] %> 
+    <%= p["message"] %> 
   </li>
   <% end %>
 <% end %>
