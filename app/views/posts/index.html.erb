@@ -2,21 +2,21 @@
   <h1>Posts</h1>
 </div>
 
-
+<% @client.home_timeline.each do |tweet| %>
+  <p><%= "#{tweet.user.screen_name}: #{tweet.text}" %></p>
+<% end %>
 
 <ul class="col-md-3"> <h2>Twitter Feed</h2>
-<% @client.each do |p| %>
-  <% if p["type"] == "link" %>
+<%# @client.each do |p| %>
+  <%# if p["type"] == "link" %>
   <li>
-    <%= p["from"]["name"] %> :
-    <%= p["message"] %> 
-    <a href="<%= p["link"] %>"><%= p["caption"] %></a>
+    <%#= p["from"]["name"] %> :
+    <%#= p["message"] %> 
+    <a href="<%#= p["link"] %>"><%#= p["caption"] %></a>
   </li>
-  <% end %>
-<% end %>
+  <%# end %>
 </ul>
 
-curl --get 'https://api.twitter.com/1.1/statuses/home_timeline.json' --header 'Authorization: OAuth oauth_consumer_key="1yJiMcR9Ug1J9tbZPQ3NCA", oauth_nonce="c3c4cff64b02f4ddf0c7de83f260d35f", oauth_signature="NySgjmhwY6duGGDNHfUUjyXKoFQ%3D", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1386585050", oauth_token="97373933-8h9k4NOXovvE7ShPwzTS0lkyXtfckbU9CbF2w200y", oauth_version="1.0"' --verbose
 
 
 
@@ -45,6 +45,7 @@ curl --get 'https://api.twitter.com/1.1/statuses/home_timeline.json' --header 'A
     </tr>
   </thead>
 
+<% @posts = Post.all %>
   <tbody>
     <% @posts.each do |post| %>
       <tr>
@@ -66,4 +67,3 @@ curl --get 'https://api.twitter.com/1.1/statuses/home_timeline.json' --header 'A
     <% end %>
   </tbody>
 </table>
-

@@ -1,9 +1,4 @@
-@client = Twitter::REST::Client.new do |config|
-  config.consumer_key        = "1yJiMcR9Ug1J9tbZPQ3NCA"
-  config.consumer_secret     = "c3c4cff64b02f4ddf0c7de83f260d35f"
-  config.access_token        = "97373933-8h9k4NOXovvE7ShPwzTS0lkyXtfckbU9CbF2w200y"
-  config.access_token_secret = "NySgjmhwY6duGGDNHfUUjyXKoFQ%3D"
-end
+
 
 #def collect_with_max_id(collection=[], max_id=nil, &block)
 #  response = yield max_id
@@ -21,11 +16,19 @@ end
 
 #fetch_all_tweets("sferik")
 
+#curl --get("https://api.twitter.com/1.1/statuses/home_timeline.json") --header 'Authorization: OAuth oauth_consumer_key="1yJiMcR9Ug1J9tbZPQ3NCA", oauth_nonce="c3c4cff64b02f4ddf0c7de83f260d35f", oauth_signature="NySgjmhwY6duGGDNHfUUjyXKoFQ%3D", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1386585050", oauth_token="97373933-8h9k4NOXovvE7ShPwzTS0lkyXtfckbU9CbF2w200y", oauth_version="1.0"' --verbose
+
+
 class PostsController < ApplicationController
 
   def index
 #   parsed_data = JSON.parse(open("@client").read)
-
+    @client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = "xG6FxgPzS4N2l4OzEANC8A"
+      config.consumer_secret     = "Z7LxQwsehgjLH0qt8FsH1FdHUPCTbSN8jBqNVSvuNg"
+      config.access_token        = "97373933-8h9k4NOXovvE7ShPwzTS0lkyXtfckbU9CbF2w200y"
+      config.access_token_secret = "pijOGeC6ncZSOcGQm0BlA1TRQVqwbLbKVVyYuOY0aJr6C"
+    end
     
 #   @posts = parsed_data["data"]
  
