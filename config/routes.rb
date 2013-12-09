@@ -1,5 +1,9 @@
 Clinkcloud::Application.routes.draw do
 root 'posts#index'
+  #get '/auth/:provider/callback', to: 'sessions#create'
+  #get '/categories/new', 
+  get '/sessions', controller: 'sessions', action: 'create', as: 'session'
+
   # Routes for the Category resource:
   # CREATE
   get '/categories/new', controller: 'categories', action: 'new', as: 'new_category'
