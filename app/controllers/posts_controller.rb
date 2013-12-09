@@ -1,9 +1,34 @@
+@client = Twitter::REST::Client.new do |config|
+  config.consumer_key        = "1yJiMcR9Ug1J9tbZPQ3NCA"
+  config.consumer_secret     = "c3c4cff64b02f4ddf0c7de83f260d35f"
+  config.access_token        = "97373933-8h9k4NOXovvE7ShPwzTS0lkyXtfckbU9CbF2w200y"
+  config.access_token_secret = "NySgjmhwY6duGGDNHfUUjyXKoFQ%3D"
+end
 
+#def collect_with_max_id(collection=[], max_id=nil, &block)
+#  response = yield max_id
+#  collection += response
+#  response.empty? ? collection.flatten : collect_with_max_id(collection, response.last.id - 1, &block)
+#end
+
+#def fetch_all_tweets(user)
+#  collect_with_max_id do |max_id|
+#   options = {:count => 200, :include_rts => true}
+#   options[:max_id] = max_id unless max_id.nil?
+#   @client.user_timeline(user, options)
+# end
+#end
+
+#fetch_all_tweets("sferik")
 
 class PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+#   parsed_data = JSON.parse(open("@client").read)
+
+    
+#   @posts = parsed_data["data"]
+ 
   end
 
   def show

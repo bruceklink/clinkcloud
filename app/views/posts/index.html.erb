@@ -3,33 +3,24 @@
 </div>
 
 
-client = Twitter::REST::Client.new do |config|
-  config.consumer_key        = "1yJiMcR9Ug1J9tbZPQ3NCA"
-  config.consumer_secret     = "YOUR_CONSUMER_SECRET"
-  config.access_token        = "YOUR_ACCESS_TOKEN"
-  config.access_token_secret = "YOUR_ACCESS_SECRET"
-end
 
+<ul class="col-md-3"> <h2>Twitter Feed</h2>
+<% @client.each do |p| %>
+  <% if p["type"] == "link" %>
+  <li>
+    <%= p["from"]["name"] %> :
+    <%= p["message"] %> 
+    <a href="<%= p["link"] %>"><%= p["caption"] %></a>
+  </li>
+  <% end %>
+<% end %>
+</ul>
 
 curl --get 'https://api.twitter.com/1.1/statuses/home_timeline.json' --header 'Authorization: OAuth oauth_consumer_key="1yJiMcR9Ug1J9tbZPQ3NCA", oauth_nonce="c3c4cff64b02f4ddf0c7de83f260d35f", oauth_signature="NySgjmhwY6duGGDNHfUUjyXKoFQ%3D", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1386585050", oauth_token="97373933-8h9k4NOXovvE7ShPwzTS0lkyXtfckbU9CbF2w200y", oauth_version="1.0"' --verbose
 
 
-+def collect_with_max_id(collection=[], max_id=nil, &block)
- +  response = yield max_id
- +  collection += response
- +  response.empty? ? collection.flatten : collect_with_max_id(collection, response.last.id - 1, &block)
- +end
- +
- +def fetch_all_tweets(user)
- +  collect_with_max_id do |max_id|
- +    options = {:count => 200, :include_rts => true}
- +    options[:max_id] = max_id unless max_id.nil?
- +    @client.user_timeline(user, options)
- +  end
- +end
- +
- +fetch_all_tweets("sferik")
- +```
+
+
 
 
 <p><%= link_to 'Add a New Post', new_post_url, class: 'btn btn-primary' %></p>
