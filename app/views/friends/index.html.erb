@@ -1,14 +1,11 @@
-<div class="page-header">
-  <h1>Friends</h1>
-  <p><%= link_to 'Add a New Friend', new_friend_url, class: 'btn btn-primary' %></p>
-</div>
+
 
 
 <ul class="col-md-3"> <h2>Links</h2>
 <% @posts.each do |p| %>
   <% if p["type"] == "link" %>
   <li>
-    <%= p["from"]["name"] %> :
+  <a href="http://www.facebook.com/<%=p["from"]["id"]%>"><%= p["from"]["name"] %>:</a>
     <%= p["message"] %> 
     <a href="<%= p["link"] %>"><%= p["caption"] %></a>
   </li>
@@ -20,9 +17,10 @@
 <% @posts.each do |p| %>
   <% if p["type"] == "photo" %>
   <li>
-    <%= p["from"]["name"] %> : <%= p["message"] %> 
+      <a href="http://www.facebook.com/<%=p["from"]["id"]%>"><%= p["from"]["name"] %>:</a>
+      <%= p["message"] %> 
   </li>
-    <img src="<%= p["picture"] %>" width="150">
+    <img src="<%= p["picture"] %>" width="200">
     </img>
   
   <% end %>
@@ -33,7 +31,7 @@
 <% @posts.each do |p| %>
   <% if p["type"] == "status" %>
   <li>
-    <%= p["from"]["name"] %> :
+    <a href="http://www.facebook.com/<%=p["from"]["id"]%>"><%= p["from"]["name"] %>:</a>
     <%= p["message"] %> 
   </li>
   <% end %>
@@ -44,7 +42,7 @@
 <% @posts.each do |p| %>
   <% if p["type"] == "videos" %>
   <li>
-    <%= p["from"]["name"] %> :
+    <a href="http://www.facebook.com/<%=p["from"]["id"]%>"><%= p["from"]["name"] %>:</a>
     <%= p["message"] %> 
   </li>
   <% end %>
@@ -52,3 +50,4 @@
 </ul>
 
 
+<div><%= link_to 'Add a New Friend', new_friend_url, class: 'btn btn-primary' %></div>

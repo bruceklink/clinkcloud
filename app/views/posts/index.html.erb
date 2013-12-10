@@ -1,32 +1,15 @@
 <div class="page-header">
-  <h1>Posts</h1>
+  <h1>Tweets</h1>
 </div>
 
 
-<ul class="col-md-3"> <h2>Tweets</h2>
+
+<ul class="col-md-12"> 
   <% @client.home_timeline.each do |tweet| %>
-    <p><%= "#{tweet.user.screen_name}: #{tweet.source}" %></p>
-  <% end %>
+      <p><%= image_tag("#{tweet.user.profile_image_url}") %> <%= "#{tweet.text}" %></p>
+ <% end %>
 </ul>
 
-<ul class="col-md-3"> <h2>Tweets</h2>
- <?php if (@client.home_timeline.possibly_sensitive="true"): ?>
-      <% @client.home_timeline.each do |tweet| %>
-        <p><%= "#{tweet.user.screen_name}: #{tweet.text} #{tweet.source}" %></p>
-      <% end %>
- <?php endif ?>
-</ul>
-
-<ul class="col-md-3"> <h2>Tweets</h2>
-  <% @client.home_timeline.each do |tweet| %>
-    <p><%= "#{tweet.user.screen_name}: #{tweet.user.profile_image_url} #{tweet.source}" %> </p>
-  <% end %>
-</ul>
-
-
-<ul class="col-md-3"> <h2>Tweets</h2>
-<%= auto_link("link @user, please #request") %>
-</ul>
 
 
 
