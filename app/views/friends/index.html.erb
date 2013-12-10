@@ -1,7 +1,7 @@
 
 
 
-<ul class="col-md-3"> <h2>Links</h2>
+<ul class="col-md-4"> <h2>Links</h2>
 <% @posts.each do |p| %>
   <% if p["type"] == "link" %>
   <li>
@@ -13,21 +13,21 @@
 <% end %>
 </ul>
 
-<ul class="col-md-3"> <h2>Photos</h2>
+<ul class="col-md-4"> <h2>Photos</h2>
 <% @posts.each do |p| %>
   <% if p["type"] == "photo" %>
   <li>
       <a href="http://www.facebook.com/<%=p["from"]["id"]%>"><%= p["from"]["name"] %>:</a>
       <%= p["message"] %> 
   </li>
-    <img src="<%= p["picture"] %>" width="200">
+    <img src="<%= p["picture"] %>" width="266">
     </img>
   
   <% end %>
 <% end %>
 </ul>
 
-<ul class="col-md-3"> <h2>Statuses</h2>
+<ul class="col-md-4"> <h2>Statuses</h2>
 <% @posts.each do |p| %>
   <% if p["type"] == "status" %>
   <li>
@@ -42,7 +42,7 @@
 <% @posts.each do |p| %>
   <% if p["type"] == "videos" %>
   <li>
-    <a href="http://www.facebook.com/<%=p["from"]["id"]%>"><%= p["from"]["name"] %>:</a>
+    <a href="http://www.facebook.com/<%= p["from"]["id"]%>"><%= p["from"]["name"] %>:</a>
     <%= p["message"] %> 
   </li>
   <% end %>
