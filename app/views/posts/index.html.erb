@@ -23,7 +23,11 @@
   <% end %>
 </ul>
 
-"possibly_sensitive":true
+
+<ul class="col-md-3"> <h2>Tweets</h2>
+<%= auto_link("link @user, please #request") %>
+</ul>
+
 
 
 <p><%= link_to 'Add a New Post', new_post_url, class: 'btn btn-primary' %></p>
