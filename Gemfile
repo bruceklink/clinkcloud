@@ -5,6 +5,7 @@ gem 'rails', '4.0.1'
 
 gem 'twitter'
 gem 'starter_generators'
+gem 'instagram'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
