@@ -1,28 +1,17 @@
-== README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+
+This app "ClinkCloud" accomplishes my MVP as a personal, efficient social media consolidator (Facebook and Twitter).
+
+Main User Story:  "As Bruce Klink, I should be able to efficently view recent Facebook and Twitter posts."  This efficiency is achieved in 3 main ways: 1) aggregating both sites into one location, 2) increasing the % of the screen used for posts (e.g. instead of advertising), and 3) sorting for the types of Facebook posts I am most interested in (photos and links).
+
+Please note this app pulls live data from Facebook's and Twitter's APIs, so if there are any issues with credential expirations, access tokens and secrets may need to be updated in the friends_controller.rb and posts_controller.rb in order to experience the site.
+
+Future versions would aim for the following:
+For Me:
+-Other accounts (LinkedIn, Instagram, Pinterest)
+-Save posts in database for faster loading
+
+For Others:
+-Allow others to log in and use it for their accounts
+-Add comments
