@@ -4,7 +4,7 @@ require 'open-uri'
 class FriendsController < ApplicationController
 
   def index
-      parsed_data = JSON.parse(open("https://graph.facebook.com/me/home?access_token=CAACEdEose0cBADGIDWyviX16viwkFEZA35jWUiku0dYXWeOkE5qZB2MkZBX28njnF0dffgioPuhhypLudctb7pYhwomU8vEPnv9yu3SD4euHQmIbZBX0itlQvgeLi0tkuPaCF9NcmA4H5eIkxUWRo9ascZCzHOwy0GZB935ZBzvhb7edAXcDGS026vnzxv07l5yeIB539AiBwZDZD&limit=600").read)
+      parsed_data = JSON.parse(open("https://graph.facebook.com/me/home?access_token=CAACEdEose0cBAJyVcIW7kZALZAPsKZAHJZBGVSeS5JNl4N5lYqkSseM5KIXjitXO6treZBSubZAD3h1oIeAMsG1aZBx4AHrGNNRmPT2ilg0Gl3wDVR45IT9lIkpCI7sQW7MO080nqYNPatHp6KzE6QJ57wH2tZCsBWzFuzzlFHMUoUafpAjT1CpN0308TotfOfdHeWZA5iVdKzgZDZD&limit=600").read)
 
     
       @posts = parsed_data["data"]

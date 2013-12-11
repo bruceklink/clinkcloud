@@ -1,41 +1,63 @@
 
+<ul class="col-md-3"> <h2>Mobile Photos</h2>
+<% @posts.each do |p| %>
+  <% if p["type"] == "photo" %>
+  <% if p["status_type"] == "mobile_status_update"%>
+  <li>
+      <img src="http://graph.facebook.com/<%= p["from"]["id"] %>/picture" width="30">
+      <a href="http://www.facebook.com/<%=p["from"]["id"]%>"><%= p["from"]["name"] %>:</a>
+      <%= p["message"] %> 
+  </li>
+    <img src="<%= p["picture"] %>" width="200">
+    </img>
+  <% end %>
+  <% end %>
+<% end %>
+</ul>
 
-
-<ul class="col-md-4"> <h2>Links</h2>
+<ul class="col-md-3"> <h2>Links</h2>
 <% @posts.each do |p| %>
   <% if p["type"] == "link" %>
   <li>
+  <img src="http://graph.facebook.com/<%= p["from"]["id"] %>/picture" width="30">  
   <a href="http://www.facebook.com/<%=p["from"]["id"]%>"><%= p["from"]["name"] %>:</a>
     <%= p["message"] %> 
+    <img src="<%= p["picture"] %>" width="200">
     <a href="<%= p["link"] %>"><%= p["caption"] %></a>
   </li>
   <% end %>
 <% end %>
 </ul>
 
-<ul class="col-md-4"> <h2>Photos</h2>
+<ul class="col-md-3"> <h2>Other Photos</h2>
 <% @posts.each do |p| %>
   <% if p["type"] == "photo" %>
+  <% if p["status_type"] != "mobile_status_update"%>
   <li>
+      <img src="http://graph.facebook.com/<%= p["from"]["id"] %>/picture" width="30">
       <a href="http://www.facebook.com/<%=p["from"]["id"]%>"><%= p["from"]["name"] %>:</a>
       <%= p["message"] %> 
   </li>
-    <img src="<%= p["picture"] %>" width="266">
+    <img src="<%= p["picture"] %>" width="200">
     </img>
-  
+  <% end %>
   <% end %>
 <% end %>
 </ul>
 
-<ul class="col-md-4"> <h2>Statuses</h2>
+<ul class="col-md-3"> <h2>Statuses</h2>
 <% @posts.each do |p| %>
-  <% if p["type"] == "status" %>
+  <% if p["type"] == "status"%>
+  <% if p["status_type"] == "mobile_status_update"%>
   <li>
+    <img src="http://graph.facebook.com/<%= p["from"]["id"] %>/picture" width="30">
     <a href="http://www.facebook.com/<%=p["from"]["id"]%>"><%= p["from"]["name"] %>:</a>
     <%= p["message"] %> 
+    
   </li>
   <% end %>
-<% end %>
+  <% end %>
+ <% end %>
 </ul>
 
   <ul class="col-md-3"> <h2>Videos</h2>
