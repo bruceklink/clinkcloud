@@ -35,11 +35,16 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find_by(id: params[:id])
-  end
+       parsed_data = JSON.parse(open("https://graph.facebook.com/me/home?access_token=CAACEdEose0cBAPzJPCgzk7zcaaMFGkjbcRZBZCUZAoWZCZAibtvRo5ERemPGmjYM4BDz6HKZCCZBq3MiXBsbcrk4KHsbJQZBV9qb4s0gE9VnVQl7a8QbvskGZCqqFIZA7RJUJmZB3VbCZBfp6E2UJdxCke4Dl5wmMGeFcIqWh5ZA7ZAsvzkQC9NXRHnUNUZAnz9XLJdZCO9P6aK8I9qeCwZDZD&limit=200").read)
+
+    
+      @posts = parsed_data["data"]  end
 
   def new
-    @networks = Network.all
+       parsed_data = JSON.parse(open("https://graph.facebook.com/me/home?access_token=CAACEdEose0cBAPzJPCgzk7zcaaMFGkjbcRZBZCUZAoWZCZAibtvRo5ERemPGmjYM4BDz6HKZCCZBq3MiXBsbcrk4KHsbJQZBV9qb4s0gE9VnVQl7a8QbvskGZCqqFIZA7RJUJmZB3VbCZBfp6E2UJdxCke4Dl5wmMGeFcIqWh5ZA7ZAsvzkQC9NXRHnUNUZAnz9XLJdZCO9P6aK8I9qeCwZDZD&limit=200").read)
+
+    
+      @posts = parsed_data["data"]
   end
 
   def create

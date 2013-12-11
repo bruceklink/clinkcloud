@@ -4,18 +4,32 @@ require 'open-uri'
 class FriendsController < ApplicationController
 
   def index
-      parsed_data = JSON.parse(open("https://graph.facebook.com/me/home?access_token=CAACEdEose0cBAJyVcIW7kZALZAPsKZAHJZBGVSeS5JNl4N5lYqkSseM5KIXjitXO6treZBSubZAD3h1oIeAMsG1aZBx4AHrGNNRmPT2ilg0Gl3wDVR45IT9lIkpCI7sQW7MO080nqYNPatHp6KzE6QJ57wH2tZCsBWzFuzzlFHMUoUafpAjT1CpN0308TotfOfdHeWZA5iVdKzgZDZD&limit=600").read)
+      parsed_data = JSON.parse(open("https://graph.facebook.com/me/home?access_token=CAACEdEose0cBAPzJPCgzk7zcaaMFGkjbcRZBZCUZAoWZCZAibtvRo5ERemPGmjYM4BDz6HKZCCZBq3MiXBsbcrk4KHsbJQZBV9qb4s0gE9VnVQl7a8QbvskGZCqqFIZA7RJUJmZB3VbCZBfp6E2UJdxCke4Dl5wmMGeFcIqWh5ZA7ZAsvzkQC9NXRHnUNUZAnz9XLJdZCO9P6aK8I9qeCwZDZD&limit=200").read)
 
     
       @posts = parsed_data["data"]
 
+      @client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = "xG6FxgPzS4N2l4OzEANC8A"
+      config.consumer_secret     = "Z7LxQwsehgjLH0qt8FsH1FdHUPCTbSN8jBqNVSvuNg"
+      config.access_token        = "97373933-8h9k4NOXovvE7ShPwzTS0lkyXtfckbU9CbF2w200y"
+      config.access_token_secret = "pijOGeC6ncZSOcGQm0BlA1TRQVqwbLbKVVyYuOY0aJr6C"
+    end
   end
 
   def show
-    @friend = Friend.find_by(id: params[:id])
+      parsed_data = JSON.parse(open("https://graph.facebook.com/me/home?access_token=CAACEdEose0cBAPzJPCgzk7zcaaMFGkjbcRZBZCUZAoWZCZAibtvRo5ERemPGmjYM4BDz6HKZCCZBq3MiXBsbcrk4KHsbJQZBV9qb4s0gE9VnVQl7a8QbvskGZCqqFIZA7RJUJmZB3VbCZBfp6E2UJdxCke4Dl5wmMGeFcIqWh5ZA7ZAsvzkQC9NXRHnUNUZAnz9XLJdZCO9P6aK8I9qeCwZDZD&limit=200").read)
+
+    
+      @posts = parsed_data["data"]
   end
 
   def new
+      parsed_data = JSON.parse(open("https://graph.facebook.com/me/home?access_token=CAACEdEose0cBAPzJPCgzk7zcaaMFGkjbcRZBZCUZAoWZCZAibtvRo5ERemPGmjYM4BDz6HKZCCZBq3MiXBsbcrk4KHsbJQZBV9qb4s0gE9VnVQl7a8QbvskGZCqqFIZA7RJUJmZB3VbCZBfp6E2UJdxCke4Dl5wmMGeFcIqWh5ZA7ZAsvzkQC9NXRHnUNUZAnz9XLJdZCO9P6aK8I9qeCwZDZD&limit=200").read)
+
+    
+      @posts = parsed_data["data"]
+
   end
 
   def create
@@ -32,7 +46,10 @@ class FriendsController < ApplicationController
   end
 
   def edit
-    @friend = Friend.find_by(id: params[:id])
+      parsed_data = JSON.parse(open("https://graph.facebook.com/me/home?access_token=CAACEdEose0cBAPzJPCgzk7zcaaMFGkjbcRZBZCUZAoWZCZAibtvRo5ERemPGmjYM4BDz6HKZCCZBq3MiXBsbcrk4KHsbJQZBV9qb4s0gE9VnVQl7a8QbvskGZCqqFIZA7RJUJmZB3VbCZBfp6E2UJdxCke4Dl5wmMGeFcIqWh5ZA7ZAsvzkQC9NXRHnUNUZAnz9XLJdZCO9P6aK8I9qeCwZDZD&limit=200").read)
+
+    
+      @posts = parsed_data["data"]
   end
 
   def update

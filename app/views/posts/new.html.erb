@@ -1,94 +1,65 @@
 <div class="page-header">
-  <h1>New Post</h1>
+  <h1>Facebook</h1>
 </div>
 
-<%= form_tag(posts_url, method: 'post', class: 'form-horizontal') do %>
-  <div class="form-group">
-    <%= label_tag :user_id, nil, class: 'col-md-2 control-label' %>
-    <div class="col-md-6">
-      <%#= number_field_tag :user_id, nil, class: 'form-control' %>
-    <select name="user_id">
-        <% User.all.each do |user| %>
-          <option value="<%= user.id %>"><%= user.first_name %> <%= user.last_name %></option>
-        <% end %>  
-      </select>
-    </div>
-  </div>
 
-  <div class="form-group">
-    <%= label_tag :network_id, nil, class: 'col-md-2 control-label' %>
-    <div class="col-md-6">
-      <%#= number_field_tag :network_id, nil, class: 'form-control' %>
-      <%= select_tag :network_id, options_from_collection_for_select(Network.all, :id, :network_name), class: "form-control" %>
-       </div>
-  </div>
-
-  <div class="form-group">
-    <%= label_tag :category_id, nil, class: 'col-md-2 control-label' %>
-    <div class="col-md-6">
-      <%= number_field_tag :category_id, nil, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= label_tag :linked_account_id, nil, class: 'col-md-2 control-label' %>
-    <div class="col-md-6">
-      <%= number_field_tag :linked_account_id, nil, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= label_tag :friend_id, nil, class: 'col-md-2 control-label' %>
-    <div class="col-md-6">
-      <%= number_field_tag :friend_id, nil, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= label_tag :post_type, nil, class: 'col-md-2 control-label' %>
-    <div class="col-md-6">
-      <%= text_field_tag :post_type, nil, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= label_tag :comment, nil, class: 'col-md-2 control-label' %>
-    <div class="col-md-6">
-      <%= text_field_tag :comment, nil, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= label_tag :link, nil, class: 'col-md-2 control-label' %>
-    <div class="col-md-6">
-      <%= text_field_tag :link, nil, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= label_tag :time_stamp, nil, class: 'col-md-2 control-label' %>
-    <div class="col-md-6">
-      <%= text_field_tag :time_stamp, nil, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= label_tag :views, nil, class: 'col-md-2 control-label' %>
-    <div class="col-md-6">
-      <%= number_field_tag :views, nil, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= label_tag :interactions, nil, class: 'col-md-2 control-label' %>
-    <div class="col-md-6">
-      <%= number_field_tag :interactions, nil, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="col-md-offset-2 col-md-6">
-      <%= submit_tag "Create Post", class: 'btn btn-primary' %>
-    </div>
-  </div>
+<ul class="col-md-3"> <h2>Mobile Photos</h2>
+<% @posts.each do |p| %>
+  <% if p["type"] == "photo" %>
+  <% if p["status_type"] == "mobile_status_update"%>
+  <li>
+      <img src="http://graph.facebook.com/<%= p["from"]["id"] %>/picture" width="30">
+      <a href="http://www.facebook.com/<%=p["from"]["id"]%>"><%= p["from"]["name"] %>:</a>
+      <%= p["message"] %> 
+  </li>
+    <img src="<%= p["picture"] %>" width="200">
+    </img>
+  <% end %>
+  <% end %>
 <% end %>
+</ul>
+
+<ul class="col-md-3"> <h2>Links</h2>
+<% @posts.each do |p| %>
+  <% if p["type"] == "link" %>
+  <li>
+  <img src="http://graph.facebook.com/<%= p["from"]["id"] %>/picture" width="30">  
+  <a href="http://www.facebook.com/<%=p["from"]["id"]%>"><%= p["from"]["name"] %>:</a>
+    <%= p["message"] %> 
+    <img src="<%= p["picture"] %>" width="200">
+    <a href="<%= p["link"] %>"><%= p["name"] %></a>
+  </li>
+  <% end %>
+<% end %>
+</ul>
+
+<ul class="col-md-3"> <h2>Other Photos</h2>
+<% @posts.each do |p| %>
+  <% if p["type"] == "photo" %>
+  <% if p["status_type"] != "mobile_status_update"%>
+  <li>
+      <img src="http://graph.facebook.com/<%= p["from"]["id"] %>/picture" width="30">
+      <a href="http://www.facebook.com/<%=p["from"]["id"]%>"><%= p["from"]["name"] %>:</a>
+      <%= p["message"] %> 
+  </li>
+    <img src="<%= p["picture"] %>" width="200">
+    </img>
+  <% end %>
+  <% end %>
+<% end %>
+</ul>
+
+<ul class="col-md-3"> <h2>Statuses</h2>
+<% @posts.each do |p| %>
+  <% if p["type"] == "status"%>
+  <% if p["status_type"] == "mobile_status_update"%>
+  <li>
+    <img src="http://graph.facebook.com/<%= p["from"]["id"] %>/picture" width="30">
+    <a href="http://www.facebook.com/<%=p["from"]["id"]%>"><%= p["from"]["name"] %>:</a>
+    <%= p["message"] %> 
+    
+  </li>
+  <% end %>
+  <% end %>
+ <% end %>
+</ul>

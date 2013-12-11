@@ -1,32 +1,36 @@
 <div class="page-header">
-  <h1>New Friend</h1>
+  <h1>Photos</h1>
 </div>
 
-<%= form_tag(friends_url, method: 'post', class: 'form-horizontal') do %>
-  <div class="form-group">
-    <%= label_tag :user_id, nil, class: 'col-md-2 control-label' %>
-    <div class="col-md-6">
-      <%= number_field_tag :user_id, nil, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= label_tag :network_id, nil, class: 'col-md-2 control-label' %>
-    <div class="col-md-6">
-      <%= text_field_tag :network_id, nil, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= label_tag :network_username, nil, class: 'col-md-2 control-label' %>
-    <div class="col-md-6">
-      <%= text_field_tag :network_username, nil, class: 'form-control' %>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <div class="col-md-offset-2 col-md-6">
-      <%= submit_tag "Create Friend", class: 'btn btn-primary' %>
-    </div>
-  </div>
+<ul class="col-md-6"> <h2>Mobile Photos</h2>
+<% @posts.each do |p| %>
+  <% if p["type"] == "photo" %>
+  <% if p["status_type"] == "mobile_status_update"%>
+  <li>
+      <img src="http://graph.facebook.com/<%= p["from"]["id"] %>/picture" width="30">
+      <a href="http://www.facebook.com/<%=p["from"]["id"]%>"><%= p["from"]["name"] %>:</a>
+      <%= p["message"] %> 
+  </li>
+    <img src="<%= p["picture"] %>" width="250">
+    </img>
+  <% end %>
+  <% end %>
 <% end %>
+</ul>
+
+
+<ul class="col-md-6"> <h2>Other Photos</h2>
+<% @posts.each do |p| %>
+  <% if p["type"] == "photo" %>
+  <% if p["status_type"] != "mobile_status_update"%>
+  <li>
+      <img src="http://graph.facebook.com/<%= p["from"]["id"] %>/picture" width="30">
+      <a href="http://www.facebook.com/<%=p["from"]["id"]%>"><%= p["from"]["name"] %>:</a>
+      <%= p["message"] %> 
+  </li>
+    <img src="<%= p["picture"] %>" width="250">
+    </img>
+  <% end %>
+  <% end %>
+<% end %>
+</ul>

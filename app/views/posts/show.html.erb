@@ -1,39 +1,18 @@
 <div class="page-header">
-  <h1>Post #<%= @post.id %></h1>
+  <h1>Links</h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt>User</dt>
-  <dd><%= @post.user_id %></dd>
-
-  <dt>Network</dt>
-  <dd><%= @post.network_id %></dd>
-
-  <dt>Category</dt>
-  <dd><%= @post.category_id %></dd>
-
-  <dt>Linked account</dt>
-  <dd><%= @post.linked_account_id %></dd>
-
-  <dt>Friend</dt>
-  <dd><%= @post.friend_id %></dd>
-
-  <dt>Post type</dt>
-  <dd><%= @post.post_type %></dd>
-
-  <dt>Comment</dt>
-  <dd><%= @post.comment %></dd>
-
-  <dt>Link</dt>
-  <dd><%= @post.link %></dd>
-
-  <dt>Time stamp</dt>
-  <dd><%= @post.time_stamp %></dd>
-
-  <dt>Views</dt>
-  <dd><%= @post.views %></dd>
-
-  <dt>Interactions</dt>
-  <dd><%= @post.interactions %></dd>
-
-</dl>
+<ul class="col-md-12"> 
+<% @posts.each do |p| %>
+  <% if p["type"] == "link" %>
+  <li>
+  <img src="http://graph.facebook.com/<%= p["from"]["id"] %>/picture" width="30">  
+  <a href="http://www.facebook.com/<%=p["from"]["id"]%>"><%= p["from"]["name"] %>:</a>
+    <h4><%= p["name"] %> </h4>
+    <%= p["message"] %> 
+    <img src="<%= p["picture"] %>" width="200">
+    <a href="<%= p["link"] %>"><%= p["caption"] %></a>
+  </li>
+  <% end %>
+<% end %>
+</ul>

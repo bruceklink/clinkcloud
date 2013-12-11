@@ -37,13 +37,12 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><%= link_to "ClinkCloud", "/" %></li>
-        <li><%= link_to '+', new_post_url, class: 'btn' %></li>
-        <li><%= link_to "Posts", "/posts" %></li>
-        <li><%= link_to "Users", "/users" %></li>
-        <li><%= link_to "Friends", "/friends" %></li>
-        <li><%= link_to "Networks", "/networks" %></li>
-        <li><%= link_to "Linked Accounts", "/linked_accounts" %></li>
+        <li><%= link_to "ClinkCloud", "/friends" %></li>
+        <li><%= link_to "Facebook", "/posts/new" %></li>
+        <li><%= link_to "Twitter", "/posts" %></li>
+        <li><%= link_to "Links", "/posts/show" %></li>
+        <li><%= link_to "Photos", "/friends/new" %></li>
+        <li><%= link_to "Statuses", "/friends/show" %></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </nav>

@@ -1,15 +1,18 @@
 <div class="page-header">
-  <h1>Friend #<%= @friend.id %></h1>
+  <h1>Statuses</h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt>User</dt>
-  <dd><%= @friend.user_id %></dd>
-
-  <dt>Network</dt>
-  <dd><%= @friend.network_id %></dd>
-
-  <dt>Network username</dt>
-  <dd><%= @friend.network_username %></dd>
-
-</dl>
+<ul class="col-md-12">
+<% @posts.each do |p| %>
+  <% if p["type"] == "status"%>
+  <% if p["status_type"] == "mobile_status_update"%>
+  <li>
+    <img src="http://graph.facebook.com/<%= p["from"]["id"] %>/picture" width="30">
+    <a href="http://www.facebook.com/<%=p["from"]["id"]%>"><%= p["from"]["name"] %>:</a>
+    <%= p["message"] %> 
+    
+  </li>
+  <% end %>
+  <% end %>
+ <% end %>
+</ul>
